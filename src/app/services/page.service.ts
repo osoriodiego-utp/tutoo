@@ -3,19 +3,13 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class RequestsService {
+export class PageService {
 
   constructor() { }
 
-  loadAll(){}
+  alertOn(){}
 
 
-  getAll(){}
-  
+  alertOff(){}
 
-  getById(){}
-
-  
-  post(){}
-  
 }

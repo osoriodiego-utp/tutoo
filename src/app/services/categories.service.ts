@@ -6,4 +6,16 @@ import { Injectable } from '@angular/core';
 export class CategoriesService {
 
   constructor() { }
+
+  loadAll(){}
+
+
+  getAll(){}
+  
+
+  getById(){}
+
+  
+  post(){}
+
 }
