@@ -1,1 +1,25 @@
-<p>home works!</p>
+<div *ngIf="alert === 'on'" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">Covid-19!</h4>
+    <p class="mb-0">Lava tus manos frecuentemente y conserva la distancia cuando salgas,
+        <a href="https://www.google.com/search?sxsrf=ALeKk03NBrbRlK_oelxGp1v2QI5PNIAP5w:1588209707685&q=COVID-19&sa=X&ved=2ahUKEwia5NGb_o7pAhXSMd8KHZVCCqwQzmcoAHoECAsQAQ&biw=1517&bih=737" class="alert-link">Más información.</a>
+    </p>
+    <button (click)="alertOff()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="jumbotron animated fadeIn fast" align="center">
+    <h1 class="display-3 ">¡Puedes aprender!</h1>
+    <p class="lead animated fadeIn ">Tu tienes las <b><i>competencias</i></b>, otros las <b><i>necesitan</i></b>.</p>
+    <hr class="my-4 ">
+    <p class="lead " align="center ">
+        <a class="btn btn-outline-primary btn-lg m-3 " [routerLink]="[ '/categories'] ">Categorias</a>
+        <a class="btn btn-outline-primary btn-lg m-3 " [routerLink]="[ '/request'] ">Solicitud</a>
+    </p>
+    <p class="animated fadeIn "><i>Tareas, proyectos, clases, asesorías y más ...</i></p>
+</div>
+
+<!-- <iframe src="https://www.youtube.com/" marginwidth="0" marginheight="0" name="ventana_iframe" scrolling="no" border="0" frameborder="0" width="300" height="300" align="center">
+</iframe> -->
+
+<app-footer></app-footer>

@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public alert: string;
 
+  constructor() {}
+    
   ngOnInit() {
+    this. alert = localStorage.getItem('alert');
+  }
+
+  alertOff() {
+    // localStorage.setItem('alert', 'off');
+    localStorage.removeItem('alert');
   }
 
 }

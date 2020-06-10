@@ -1,1 +1,34 @@
-<p>categories works!</p>
+<h1 class="d-inline animated fadeIn">Categorias</h1>
+<button [routerLink]="['/newcategory']" class=" d-inline btn btn-primary float-right">
+    <i class="far fa-plus-square"></i> New Category</button>
+<hr>
+
+<div *ngIf="loading" class="text-center mt-3 animate__animated animate__fadeIn">
+    <h4 class="alert-heading">Cargando</h4>
+    <p><i class="fas fa-spinner fa-spin fa-4x"></i></p>
+    <p>Espere por favor.</p>
+</div>
+
+
+<div class="row">
+    <div *ngFor="let category of categories" class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3">
+        <div class="card animated fadeIn">
+            <div class="card-body m-1" align="center">
+                <a [routerLink]="[ '/category', category.name] ">
+                    <img src={{category.imageurl}} class="card-img-top width=32 ">
+                    <h2 class="card-title text-resize text-uppercase ">{{category.name}}</h2>
+                </a>
+                <h5 class="card-title text-resize "><i>subcategories</i></h5>
+                <p class="card-text ">{{category.tutors}} tutores</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container ">
+    <p *ngIf="!loading " class="lead " align="center ">
+        <a [routerLink]="[ '/home'] " class="btn btn-danger m-2 ">Atras</a>
+    </p>
+</div>

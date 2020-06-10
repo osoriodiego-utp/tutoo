@@ -13,6 +13,8 @@ export class AppComponent {
   
   title = 'tutoo';
 
-  constructor (private tutors:TutorsService, private categories:CategoriesService){}
+  constructor (private tutors:TutorsService, private categories:CategoriesService){
+    localStorage.setItem('alert', 'on');
+  }
 
 }

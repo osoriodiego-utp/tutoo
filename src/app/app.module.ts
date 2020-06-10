@@ -21,6 +21,7 @@ import { PagenotfoundComponent } from './components/page/pagenotfound/pagenotfou
 import { CategoryComponent } from './components/categories/category/category.component';
 import { CategoriesComponent } from './components/categories/categories/categories.component';
 import { NewcategoryComponent } from './components/categories/newcategory/newcategory.component';
+import { InfoComponent } from './components/page/info/info.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { NewcategoryComponent } from './components/categories/newcategory/newcat
     PagenotfoundComponent,
     CategoryComponent,
     CategoriesComponent,
-    NewcategoryComponent
+    NewcategoryComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
