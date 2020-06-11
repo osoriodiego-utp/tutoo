@@ -1,1 +1,40 @@
-<p>requests works!</p>
+<h1 class=" animated fadeIn" style="background-color: white;">Solicitudes</h1>
+<hr>
+
+
+<div *ngIf="loading" class="text-center mt-3 animate__animated animate__fadeIn">
+    <h4 class="alert-heading">Cargando</h4>
+    <p><i class="fas fa-spinner fa-spin fa-4x"></i></p>
+    <p>Espere por favor.</p>
+</div>
+
+<table *ngIf="!loading && requests.length > 0" class="table mt-1">
+    <thead class="thead-dark">
+        <tr align="center">
+            <th>Solicitante</th>
+            <th>Categoria</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let request of requests; let idx = index" align="center">
+            <td>{{request.name}}</td>
+            <td>{{request.category}}</td>
+            <td>
+                <label *ngIf="request.revised" class="badge badge-success">revisada</label>
+                <label *ngIf="!request.revised" class="badge badge-warning">pendiente</label>
+            </td>
+            <td>
+                <div class=" row ">
+                    <button [routerLink]="['/showrequest', request.id]" class="col btn btn-outline-primary btn-sm mr-1">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button (click)="deleteRequest(request, idx)" class="col btn btn-outline-danger btn-sm mr-1">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

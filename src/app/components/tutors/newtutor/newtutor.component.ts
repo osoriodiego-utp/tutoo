@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CategoryModel } from '../../../models/category.model';
+
 
 @Component({
   selector: 'app-newtutor',
@@ -7,9 +10,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewtutorComponent implements OnInit {
 
-  constructor() { }
+  public tutorForm: FormGroup;
+  public categories: CategoryModel[] = [];
+  private image: any;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.createForm();
+    this.loadFormData();
+  }
 
   ngOnInit() {
   }
+
+
+  createForm() {
+    this.tutorForm = this.formBuilder.group({
+      id: [],
+      imageurl: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(5)]],
+      lastname: ['', [Validators.required, Validators.minLength(5)]],
+      email: ['', [Validators.required, Validators.pattern('^[^@]+@[^@]+\.[a-zA-Z]{2,}$')]],
+      phone: ['', [Validators.required, Validators.minLength(7)]],
+      bio: ['', [Validators.required, Validators.minLength(50)]],
+      value: ['', [Validators.required]],
+      city: ['', [Validators.required, Validators.minLength(5)]],
+      category: ['', [Validators.required]],
+      subjects: ['', [Validators.required]],
+    })
+  }
+
+
+  loadFormData() {
+    this.tutorForm.reset({});
+  }
+
+
+  isInvalid(field: string): boolean {
+    return this.tutorForm.get(field).invalid && this.tutorForm.get(field).touched;
+  }
+
+  isInvalidFile(field: string): boolean {
+    return this.tutorForm.get(field).invalid && this.tutorForm.get(field).touched;
+  }
+
+  handleImage(event: any) {
+    this.image = event.target.files[0];
+    console.log ("IMAGE: ", this.image);
+  }
+
+  createTutor(form : FormGroup){}
 
 }

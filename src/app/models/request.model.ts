@@ -4,7 +4,7 @@ export class RequestModel {
     phone: number;
     email: string;
     category: string;
-    attachmenturl?: string;
+    documenturl?: string;
     imageurl?: string;
     description: string;
     

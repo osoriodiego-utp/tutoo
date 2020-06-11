@@ -12,6 +12,7 @@ import { ShowrequestComponent } from './components/requests/showrequest/showrequ
 import { InfoComponent } from './components/page/info/info.component';
 import { LoginComponent } from './components/users/login/login.component';
 import { PagenotfoundComponent } from './components/page/pagenotfound/pagenotfound.component';
+import { NewtutorComponent } from './components/tutors/newtutor/newtutor.component';
 
 
 const routes: Routes =
@@ -28,6 +29,7 @@ const routes: Routes =
     { path: 'showrequest/:id', component: ShowrequestComponent },
     { path: 'admin', component: AdminComponent },
     { path: 'tutors', component: TutorsComponent },
+    { path: 'newtutor', component: NewtutorComponent },
     { path: 'info', component: InfoComponent },
     // into admin
     // { path: '**', pathMatch: "full", redirectTo: 'requested' },

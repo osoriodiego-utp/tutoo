@@ -1,1 +1,40 @@
-<p>category works!</p>
+<h1 class="sticky-title animated fadeIn">{{category}}</h1>
+<hr>
+
+
+<div *ngIf="loading" class="text-center mt-3 animate__animated animate__fadeIn">
+    <h4 class="alert-heading">Cargando</h4>
+    <p><i class="fas fa-spinner fa-spin fa-4x"></i></p>
+    <p>Espere por favor.</p>
+</div>
+
+
+<div *ngIf="tutors.length === 0" class="alert alert-primary">
+    <strong>¡Lo sentimos!</strong> Aun no hay tutores asociados a esta categoría. Puedes solicitar uno <a [routerLink]="['/request']" class="alert-link">aquí</a>
+</div>
+
+<div *ngIf="!loading && tutors.length > 0" class="row">
+    <div *ngFor="let tutor of tutors" class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
+        <div class="card animated fadeIn">
+            <div class="row">
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4 mb-4">
+                    <img class="m-1 w-100 img-fluid" style="max-height: 200px;" src="{{tutor.imageurl}}" alt="{{tutor.name}}">
+                </div>
+                <div class="col-8 col-sm-8 col-md-8 col-lg-8 mb-8">
+                    <h3><b>{{tutor.name}} {{tutor.lastname}}</b></h3>
+                    <p><i>{{tutor.subjects}}.</i></p>
+                    <p><i>{{tutor.bio}}.</i></p>
+                    <p>{{tutor.email}} -- {{tutor.phone}}</p>
+                    <p>Valor/hora desde: {{tutor.value | currency:'$':'symbol':'1.0'}}, {{tutor.city}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container ">
+    <p *ngIf="!loading " class="lead " align="center ">
+        <a [routerLink]="[ '/categories'] " class="btn btn-danger m-2 ">Atras</a>
+    </p>
+</div>

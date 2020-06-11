@@ -31,6 +31,7 @@ export class CategoriesService {
       category.id = key;
       categories.push(category);
     });
+    console.log("getAll ==>", categories);
     return categories;
   }
   

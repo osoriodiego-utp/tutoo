@@ -1,6 +1,15 @@
-export class CategoryModel {
+export class TutorModel {
     id: string;
-    name: string;
     imageurl: any;
-    tutors: number;
+    name: string;
+    lastname: string;
+    email: string;
+    phone: number;
+    bio: string; // ver más
+    value: number;
+    city: string; //select of cities
+    category: string;
+    subjects: string; //string[], revisar ejemplo de reactives forms
+
+    // verified: boolean
 }

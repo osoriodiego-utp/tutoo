@@ -19,7 +19,6 @@ export class CategoriesComponent implements OnInit {
     this.categoriesService.getAll().subscribe(data=>{
       this.categories = data;
       this.loading = false;
-      console.log("CATEGORIES: ", this.categories);
     });
   }
 

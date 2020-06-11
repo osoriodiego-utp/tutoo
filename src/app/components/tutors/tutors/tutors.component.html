@@ -1,1 +1,37 @@
-<p>tutors works!</p>
+<h1 class="d-inline animated fadeIn">Tutores</h1>
+<button [routerLink]="['/newtutor']" class=" d-inline btn btn-primary float-right">
+    <i class="far fa-plus-square"></i> Tutor</button>
+<hr>
+
+<div *ngIf="loading" class="text-center mt-3 animate__animated animate__fadeIn">
+    <h4 class="alert-heading">Cargando</h4>
+    <p><i class="fas fa-spinner fa-spin fa-4x"></i></p>
+    <p>Espere por favor.</p>
+</div>
+
+<div class="row">
+    <div *ngFor="let tutor of tutors" class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
+        <div class="card animated fadeIn">
+            <div class="row">
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4 mb-4">
+                    <img class="m-1 w-100 img-fluid" style="max-height: 200px;" src={{tutor.imageurl}} alt="{{tutor.name}}">
+                </div>
+                <div class="col-8 col-sm-8 col-md-8 col-lg-8 mb-8">
+                    <h3><b>{{tutor.name}} {{tutor.lastname}}</b></h3>
+                    <h4>({{tutor.category}})</h4>
+                    <p><i>{{tutor.bio}}.</i></p>
+                    <p><i>{{tutor.subjects}}.</i></p>
+                    <p>{{tutor.email}} -- {{tutor.phone}}</p>
+                    <p>Valor/hora desde: {{tutor.value | currency:'$':'symbol':'1.0'}}, {{tutor.city}}</p>
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalCenter">
+                        <i>Ver más...</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p class="lead" align="center">
+    <a [routerLink]="['/home']" class="btn btn-danger m-2">Atras</a>
+</p>

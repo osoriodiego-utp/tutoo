@@ -1,1 +1,50 @@
-<p>showrequest works!</p>
+<h1 class=" animated fadeIn" style="background-color: white;">
+    <label *ngIf="request.revised" class="badge badge-success">revisada</label>
+    <label *ngIf="!request.revised" class="badge badge-warning">pendiente</label>
+</h1>
+
+<hr>
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>Solicita: </h2>
+        <h4>{{request.name}}</h4>
+
+        <h2>Telefono: </h2>
+        <h4>{{request.phone}}</h4>
+
+        <h2>Correo: </h2>
+        <h4>{{request.email}}</h4>
+    </div>
+
+    <div class="col-sm-6">
+        <h2>Id: </h2>
+        <h4>{{request.id}}</h4>
+
+        <h2>Categoria: </h2>
+        <h4>{{request.category}}</h4>
+
+        <h2>Descripcion: </h2>
+        <h4>{{request.description}}</h4>
+    </div>
+</div>
+
+<br>
+<hr>
+<br>
+
+<div class="row">
+    <div align="center">
+        <h1><i>Aquí debería ir el archivo adjunto</i></h1>
+        <!-- <pdf-viewer [src]="pdfSrc" [render-text]="true" style="display: block;"></pdf-viewer> -->
+    </div>
+</div>
+
+<br>
+<hr>
+<br>
+
+<p class="lead" align="center">
+    <a [routerLink]="['/requests']" class="btn btn-danger m-2">  Atras  </a>
+    <button *ngIf="!request.revised" (click)="revised(request)" class="btn btn-primary m-2">Revisada</button>
+</p>

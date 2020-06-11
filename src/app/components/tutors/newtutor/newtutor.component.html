@@ -1,1 +1,63 @@
-<p>newtutor works!</p>
+<h1 class=" animated fadeIn">Nuevo Tutor</h1>
+<hr>
+
+
+<form [formGroup]="tutorForm" (ngSubmit)="createTutor(tutorForm)" class="m-4 animated fadeIn fast">
+    <fieldset class="m-4">
+        <div class="form-group">
+            <label>Imagen de perfil</label>
+            <input formControlName="imageurl" (change)="handleImage($event)" type="file" class="form-control" [class.is-invalid]="isInvalid('imageurl')" placeholder="Seleccionar archivo">
+        </div>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label>Nombre</label>
+                <input formControlName="name" type="text" class="form-control" [class.is-invalid]="isInvalid('name')" placeholder="Nombre completo">
+            </div>
+            <div class="col-sm-6 form-group">
+                <label>Apellido</label>
+                <input formControlName="lastname" type="text" class="form-control" [class.is-invalid]="isInvalid('name')" placeholder="Apellido">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input formControlName="email" type="email" class="form-control" [class.is-invalid]="isInvalid('name')" placeholder="Correo electrónico">
+        </div>
+        <div class="form-group">
+            <label>Teléfono</label>
+            <input formControlName="phone" type="number" class="form-control" [class.is-invalid]="isInvalid('name')" placeholder="Teléfono de contacto">
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label>Valor</label>
+                <input formControlName="value" type="number" class="form-control" [class.is-invalid]="isInvalid('name')" placeholder="Costo por hora">
+            </div>
+            <div class="col-sm-6 form-group">
+                <label>Ciudad</label>
+                <input formControlName="city" type="text" class="form-control" [class.is-invalid]="isInvalid('name')" placeholder="Ciudad">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleSelect1">Categoria</label>
+            <select formControlName="category" class="form-control" id="exampleSelect1">
+                <option *ngFor="let category of categories" >{{category.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Subcategorias</label>
+            <input formControlName="subjects" type="text" class="form-control" [class.is-invalid]="isInvalid('name')" placeholder="Subcategorias">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleTextarea">Biografía</label>
+            <textarea formControlName="bio" class="form-control" [class.is-invalid]="isInvalid('email')" id="exampleTextarea" rows="3"></textarea>
+        </div>
+
+
+        <p class="lead" align="center">
+            <a [routerLink]="['/tutors']" class="btn btn-danger m-2">Atras</a>
+            <button type="submit" class="btn btn-primary m-2">Enviar</button>
+        </p>
+    </fieldset>
+</form>
