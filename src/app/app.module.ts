@@ -7,7 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
+//ROUTING
 import { AppRoutingModule } from './app-routing.module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common'; //to use { useHash: true }
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/page/home/home.component';
 import { FooterComponent } from './components/page/footer/footer.component';
@@ -26,6 +29,7 @@ import { CategoryComponent } from './components/categories/category/category.com
 import { CategoriesComponent } from './components/categories/categories/categories.component';
 import { NewcategoryComponent } from './components/categories/newcategory/newcategory.component';
 import { InfoComponent } from './components/page/info/info.component';
+import { AboutComponent } from './components/page/about/about.component';
 
 @NgModule({
   declarations: [
@@ -46,15 +50,19 @@ import { InfoComponent } from './components/page/info/info.component';
     CategoryComponent,
     CategoriesComponent,
     NewcategoryComponent,
-    InfoComponent
+    InfoComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy} //to use { useHash: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

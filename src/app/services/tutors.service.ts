@@ -12,9 +12,15 @@ export class TutorsService {
   private url = 'https://tutoo-app.firebaseio.com';
   public tutors: TutorModel[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.load();
+  }
 
-  loadAll() { }
+  public load() {
+    this.http.get(`${this.url}/tutors.json`).subscribe((data: any[]) => {
+      this.tutors = data;
+    });
+  }
 
 
   getAll() {
@@ -39,15 +45,11 @@ export class TutorsService {
 
 
   getByCategory(category: string) {
-    this.getAll().subscribe(data=>{
-      this.tutors = data;
-    })
-
     let tutorsFiltered: TutorModel[] = [];
 
-    for (let i = 0; i < this.tutors.length; i++) {
-      if (this.tutors[i].category === category) {
-        tutorsFiltered.push(this.tutors[i]);
+    for (let tutor of this.tutors) {
+      if (tutor.category === category) {
+        tutorsFiltered.push(tutor);
       }
     }
     console.log(`getByCategory( ${category} ) ==> `, tutorsFiltered);
@@ -59,6 +61,9 @@ export class TutorsService {
   getById() { }
 
 
-  addTutor() { }
+  addTutor(tutor: TutorModel) {
+  let categoryId = tutor.category;
+  let nTutorsUrl = `${this.url}/categories/${categoryId}/tutors.json`;
+  }
 
 }

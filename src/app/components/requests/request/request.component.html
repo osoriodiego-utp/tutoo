@@ -43,15 +43,9 @@
                 <input formControlName="imageurl" (change)="handleImage($event)" type="file" class="form-control" [class.is-invalid]="isInvalidImage('imageurl')" placeholder="Seleccionar imagen">
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
 
 
-        <p class="lead" align="center">
+        <p class="lead" style="margin-top: 50px;" align="center">
             <a [routerLink]="['/home']" class="btn btn-danger m-2">Atras</a>
             <button type="submit" class="btn btn-primary m-2">Enviar</button>
         </p>

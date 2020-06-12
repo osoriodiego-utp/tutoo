@@ -1,18 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<p class="navbar lead" align="center">
+    <a [routerLink]="['requests']"><i class="far fa-list-alt fa-2x"></i></a>
+    <a [routerLink]="['tutors']"><i class="far fa-address-card fa-2x"></i></a>
+    <a [routerLink]="['categories']"><i class="fab fa-buffer fa-2x"></i></a>
+    <a [routerLink]="['info']"><i class="fas fa-info fa-2x"></i></a>
+    <a (click)="logout()"><i class="fas fa-sign-out-alt fa-2x" style="color: red;"></i> </a>
+</p>
 
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="requested">Solicitudes</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="tutors">Tutores</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="categories">Categorias</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="info">Información</a>
-        </li>
-    </ul>
-    <a (click)="logout()" class="btn btn-outline-danger m-2">Cerrar sesión</a>
-</nav>
+<router-outlet></router-outlet>

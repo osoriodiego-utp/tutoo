@@ -8,11 +8,19 @@ import { map } from 'rxjs/operators';
 })
 export class CategoriesService {
 
+  private categories: CategoryModel[] =[];
+
   private url = 'https://tutoo-app.firebaseio.com';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.load();
+  }
 
-  loadAll(){}
+  public load() {
+    this.getAll().subscribe(data => {
+      this.categories = data;
+    });
+  }
 
 
   public getAll() {
@@ -34,11 +42,11 @@ export class CategoriesService {
     console.log("getAll ==>", categories);
     return categories;
   }
-  
 
-  getById(){}
 
-  
-  post(){}
+  getById() { }
+
+
+  post() { }
 
 }
