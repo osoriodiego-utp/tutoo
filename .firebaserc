@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tutoo-app": {
+      "hosting": {
+        "tutos": [
+          "tutoo-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tutoo-app"
+  }
+}

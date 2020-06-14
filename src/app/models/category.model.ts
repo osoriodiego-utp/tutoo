@@ -3,4 +3,11 @@ export class CategoryModel {
     name: string;
     imageurl: any;
     tutors: number;
+
+    constructor(name: string, imageurl: any) {
+        this.id = '';
+        this.name = name;
+        this.imageurl = imageurl;
+        this.tutors = 0;
+    }
 }

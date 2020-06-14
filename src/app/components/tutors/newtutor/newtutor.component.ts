@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CategoryModel } from '../../../models/category.model';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 
 @Component({
@@ -11,15 +12,17 @@ import { CategoryModel } from '../../../models/category.model';
 export class NewtutorComponent implements OnInit {
 
   public tutorForm: FormGroup;
-  public categories: CategoryModel[] = [];
+  public categories: string[];
   private image: any;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private categoriesService: CategoriesService) {
     this.createForm();
     this.loadFormData();
   }
 
   ngOnInit() {
+    this.categories = this.categoriesService.setList();
+    this.categories.unshift('- selecciona una categoría -');
   }
 
 
@@ -55,7 +58,7 @@ export class NewtutorComponent implements OnInit {
 
   handleImage(event: any) {
     this.image = event.target.files[0];
-    console.log ("IMAGE: ", this.image);
+    console.log(">> image loaded");
   }
 
   createTutor(form : FormGroup){}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { CategoriesService } from '../../../services/categories.service';
 
 
 @Component({
@@ -10,17 +11,20 @@ import { NgForm, FormGroup, FormBuilder, Validators, FormArray } from '@angular/
 export class RequestComponent implements OnInit {
 
   public reqForm: FormGroup;
-  public categories: any[];
-  public img: any;
-  public document: any;
+  public categories: string[];
+  private image: any;
+  private document: any;
   // public categoryList: string[];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private categoriesService: CategoriesService) {
     this.createForm();
     this.loadFormData();
-  }
 
+  }
+  
   ngOnInit() {
+    this.categories = this.categoriesService.setList();
+    this.categories.unshift('- selecciona una categoría -');
   }
 
   createForm() {
@@ -59,9 +63,15 @@ export class RequestComponent implements OnInit {
     return this.reqForm.get(field) as FormArray;
   }
 
-  handleImage(){}
+  handleImage(event: any) {
+    this.image = event.target.files[0];
+    console.log(">> image loaded");
+  }
 
-  handleDocument(){}
+  handleDocument(event: any){
+    this.image = event.target.files[0];
+    console.log(">> document loaded");
+  }
 
   createRequest(){}
 

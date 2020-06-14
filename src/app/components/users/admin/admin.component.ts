@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+// import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(
+    // private auth: AuthService, 
+    private router: Router) {
     console.log("admin.component.constructor()"); //LOG
   }
 
@@ -17,7 +19,7 @@ export class AdminComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout();
+    // this.auth.logout();
     this.router.navigateByUrl('/login');
   }
 
