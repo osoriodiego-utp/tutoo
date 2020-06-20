@@ -8,7 +8,6 @@ import { AngularFireStorage } from '@angular/fire/storage';
 
 import { CategoryModel } from '../models/category.model';
 import { ImageModel } from '../models/image.model';
-import { JsonPipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +16,15 @@ export class CategoriesService {
 
   private url = 'https://tutoo-app.firebaseio.com';
   public list: string[] = [];
-  public categories: CategoryModel[] = [];
+  private categories: CategoryModel[] = [];
 
-  private imagePath: any;
-  private imageUrl: Observable<string>;
+  //fileupload
+  public file: File;
+  public imagePath: string;
+  public fileref: any;
+  public imageUrl: Observable<string>;
 
   constructor(private http: HttpClient, private storage: AngularFireStorage) {
-    this.setList();
     this.load();
   }
 
@@ -60,33 +61,37 @@ export class CategoriesService {
 
 
   create(image: ImageModel, data: CategoryModel) {
+    console.log("CategoryService.createCategory(): ");
+
     this.uploadData(image, data);
   }
 
 
+  public createCategory(image: ImageModel, data: CategoryModel) {
+    console.log("CategoryService.createCategory(): ");
+
+    this.uploadData(image, data);
+  }
+
   private uploadData(image: ImageModel, data: CategoryModel) {
+    console.log("CategoryService.uploadImageCategory(): ");
 
     this.imagePath = `categories/img/${image.name}`;
-    console.log(" imagePath ==> ", this.imagePath);
     let imageRef = this.storage.ref(this.imagePath);
-    console.log(" imageRef ==> ", imageRef);
-
-
-    // /* upload image */
     let task = this.storage.upload(this.imagePath, image);
-    console.log(" imageTask ==> ", task);
 
+    /* upload image */
     task.snapshotChanges()
       .pipe(
         finalize(() => {
           imageRef.getDownloadURL().subscribe(url => {
             this.imageUrl = url;
             console.log("IMAGE_URL: ", url);
-
+            
             /* save post + img */
             let categoryDTO = new CategoryModel(data.name, this.imageUrl);
             console.log("DATA: ", categoryDTO);
-            this.post(categoryDTO).subscribe((resp: any) => {
+            this.post(categoryDTO).subscribe((resp:any)=>{
               data.id = resp.name;
               console.log("RESP: ", resp);
             })
@@ -99,7 +104,6 @@ export class CategoriesService {
     console.log("CategoryService.categoryPost(): ", category);
     return this.http.post(`${this.url}/categories.json`, category);
   }
-
 
   public setList() {
     if(this.categories.length === 0){

@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'tutos';
+
+  title = 'Tutoos';
+
+  constructor() {
+    localStorage.setItem('alert', 'on');
+  }
+
 }

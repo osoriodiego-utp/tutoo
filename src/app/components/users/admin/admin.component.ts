@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,9 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(
-    // private auth: AuthService, 
-    private router: Router) {
+  constructor(private auth: AuthService, private router: Router) {
     console.log("admin.component.constructor()"); //LOG
   }
 

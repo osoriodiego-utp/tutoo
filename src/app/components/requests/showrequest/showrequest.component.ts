@@ -10,7 +10,7 @@ import { RequestsService } from '../../../services/requests.service';
 })
 export class ShowrequestComponent implements OnInit {
 
-  public request = new RequestModel;
+  public request: RequestModel;
   // public pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
 
   constructor(private router: Router, public activatedRoute: ActivatedRoute, private requestsService: RequestsService) { }
@@ -18,7 +18,7 @@ export class ShowrequestComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       console.log(`ShowRequest > ${params['id']}`);
-      this.requestsService.getById(params['id']).subscribe((data: RequestModel) => {
+      this.requestsService.getById(params['id']).subscribe((data: any) => {
         console.log("DATA: ", data);
         this.request = data;
         this.request.id = params['id'];

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
 import { CategoriesService } from '../../../services/categories.service';
 import { TutorsService } from '../../../services/tutors.service';
 import { TutorModel } from '../../../models/tutor.model';
@@ -21,10 +20,16 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
+
     this.route.params.subscribe(params => {
       this.category = params['id'];
       this.tutors = this.tutorsService.getByCategory(params['id']);
       this.loading = false;
+
+      // this.tutorsService.getByCategory(params['id']).subscribe(data => {
+      //   this.tutors = data;
+      //   this.loading = false;
+      // });
     })
   }
 

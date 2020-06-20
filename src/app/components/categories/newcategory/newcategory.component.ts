@@ -21,8 +21,7 @@ export class NewcategoryComponent implements OnInit {
     this.loadFormData();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   createForm() {
     this.catForm = this.formBuilder.group({
@@ -44,7 +43,7 @@ export class NewcategoryComponent implements OnInit {
 
   createCategory() {
     if (this.catForm.invalid) {
-      console.log("INVALID FORM");
+      console.log("Invalid form");
       return Object.values(this.catForm.controls).forEach(control => {
         control.markAllAsTouched();
       });
@@ -57,7 +56,6 @@ export class NewcategoryComponent implements OnInit {
     });
     Swal.showLoading();
 
-    // console.log("FORM VALUE: ", this.catForm.value);
     this.categoriesService.create(this.image, this.catForm.value);
     this.catForm.reset();
 
@@ -73,8 +71,7 @@ export class NewcategoryComponent implements OnInit {
 
   handleImage(event: any) {
     this.image = event.target.files[0];
-    console.log("Image loaded");
-    // console.log("image ==> ", this.image);
+    console.log(">> loaded ", this.image.name);
   }
 
 }
